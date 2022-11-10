@@ -1,38 +1,159 @@
-.App {
-  text-align: center;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root{
+  --clr-border: black;
+  --clr-border-grid: hsl(298, 52%, 34%);
+  --clr-grid-bg: hsl(356, 81%, 83%);
+  --clr-btn-bg: hsl(355, 89%, 71%);
+  --clr-btn-bg-hover: hsl(355, 89%, 60%);
+  --clr-bg-main: hsl(355, 89%, 64%);
+  --box-shadow: 10px 10px 9px -5px rgba(0,0,0,0.73);
+}
+body{
+  background-color: var(--clr-bg-main);
+}
+.App{
+  display: flex;
+  justify-content: center;
+  margin-top: 33vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+#drum-machine{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid var(--clr-border-grid);
+  background-color: var(--clr-grid-bg);
+  border-radius: 0.4rem;
+  box-shadow: var(--box-shadow);
+}
+.pad-grid{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(3,1fr);
+  justify-content: center;
+ 
+}
+#display{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: space-between;
+  margin:3rem;
+  font-weight: 600;
+  font-size: 2rem;
+  background-color: var(--clr-btn-bg);
+  padding: 1rem;
+  width: 25vh;
+  text-align: center;
+  border-radius: 0.4rem;
+  box-shadow: var(--box-shadow);
+}
+.drum-pad{
+  height: 10rem;
+  width: 10rem;
+  border: 1px solid var(--clr-border);
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: var(--box-shadow);
+  background-color: var(--clr-btn-bg);
+  font-size: 1.5rem;
 }
-
-.App-link {
-  color: #61dafb;
+.drum-pad:hover{
+  background-color: var(--clr-btn-bg-hover);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+[type='range'] {
+  -webkit-appearance: none;
+  margin: 12.5px 0;
+  width: 100%;
+}
+[type='range']:focus {
+  outline: none;
+}
+[type='range']::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px 2px #222, 0 0 2px #2f2f2f;
+  background: #424242;
+  border: 1px solid #000;
+  border-radius: 0;
+}
+[type='range']::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #111, 0 0 1px #1e1e1e;
+  border: 0 solid #fff;
+  height: 25px;
+  width: 8px;
+  border-radius: 0;
+  background: var(--clr-border-grid);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+}
+[type='range']:focus::-webkit-slider-runnable-track {
+  background: #4f4f4f;
+}
+[type='range']::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px 2px #222, 0 0 2px #2f2f2f;
+  background: #424242;
+  border: 1px solid #000;
+  border-radius: 0;
+}
+[type='range']::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #111, 0 0 1px #1e1e1e;
+  border: 0 solid #fff;
+  height: 25px;
+  width: 8px;
+  border-radius: 0;
+  background: var(--clr-border-grid);
+  cursor: pointer;
+}
+[type='range']::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border-color: transparent;
+  border-width: 8px 0;
+  color: transparent;
+}
+[type='range']::-ms-fill-lower {
+  box-shadow: 2px 2px 2px #222, 0 0 2px #2f2f2f;
+  background: #353535;
+  border: 1px solid #000;
+  border-radius: 0;
+}
+[type='range']::-ms-fill-upper {
+  box-shadow: 2px 2px 2px #222, 0 0 2px #2f2f2f;
+  background: #424242;
+  border: 1px solid #000;
+  border-radius: 0;
+}
+[type='range']::-ms-thumb {
+  box-shadow: 1px 1px 1px #111, 0 0 1px #1e1e1e;
+  border: 0 solid #fff;
+  height: 25px;
+  width: 8px;
+  border-radius: 0;
+  background: var(--clr-border-grid);
+  cursor: pointer;
+}
+[type='range']:focus::-ms-fill-lower {
+  background: #424242;
+}
+[type='range']:focus::-ms-fill-upper {
+  background: #4f4f4f;
 }
