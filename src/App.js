@@ -1,20 +1,10 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import './App.css';
 
 
 
 function App() {
   
-  const [clickedPad, setClickedPad] = useState('');
-  const audioPlayer = useRef();
-
-  useEffect(() => {
-    document.addEventListener("keydown", (e) =>{
-      handleSound(e.key.toUpperCase(),drumPads);
-    });
-  });
-
-
   const drumPads = [
     {
       name:'Heater-1',
@@ -71,6 +61,17 @@ function App() {
       src: "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"
     }
   ];
+  const [clickedPad, setClickedPad] = useState([]);
+  const audioPlayer = useRef(null);
+  const handleButtonPress = (e) =>{
+    handleSound(e.key.toUpperCase(),drumPads);
+  };
+  useEffect(() => {
+    document.addEventListener("keydown", handleButtonPress)
+    return () => document.removeEventListener("keydown", handleButtonPress);
+  });
+
+
 
  
   function handleSound(id, pads) {
@@ -88,7 +89,7 @@ function App() {
     <div className='App'>
       <div id='drum-machine'>
           <div id='display'>{clickedPad.name}
-          <input type='range' volume className="form-range" onChange={(e) => {
+          <input type='range' className="form-range" onChange={(e) => {
             audioPlayer.current.volume = e.target.value / 100;
           }}></input></div>
         <div className='pad-grid'>

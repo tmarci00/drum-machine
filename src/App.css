@@ -9,7 +9,7 @@
   --clr-btn-bg: hsl(355, 89%, 71%);
   --clr-btn-bg-hover: hsl(355, 89%, 60%);
   --clr-bg-main: hsl(355, 89%, 64%);
-  --box-shadow: 10px 10px 9px -5px rgba(0,0,0,0.73);
+  --box-shadow:0px 0px 10px 2px rgba(0,0,0,0.45);
 }
 body{
   background-color: var(--clr-bg-main);
@@ -65,6 +65,7 @@ body{
   box-shadow: var(--box-shadow);
   background-color: var(--clr-btn-bg);
   font-size: 1.5rem;
+  cursor: pointer;
 }
 .drum-pad:hover{
   background-color: var(--clr-btn-bg-hover);
